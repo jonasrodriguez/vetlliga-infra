@@ -1,8 +1,8 @@
 services:
 
   backend:
-    image: yourname/backend:latest
-    container_name: backend
+    image: jonasrodriguez/vetlliga-backend:latest
+    container_name: vetlliga-backend
     environment:
       - ADMIN_PASSWORD=changeme
       - JWT_SECRET=changeme
@@ -11,13 +11,13 @@ services:
     depends_on:
       - mariadb
     networks:
-      - app
+      - app-network
 
   frontend:
-    image: yourname/frontend:latest
-    container_name: frontend
+    image: jonasrodriguez/vetlliga-frontend:latest
+    container_name: vetlliga-frontend
     networks:
-      - app
+      - app-network
 
   mariadb:
     image: mariadb:11.3
