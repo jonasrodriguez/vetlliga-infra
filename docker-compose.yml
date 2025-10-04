@@ -3,6 +3,8 @@ services:
   backend:
     image: jonasrodriguez/vetlliga-backend:latest
     container_name: vetlliga-backend
+    volumes:
+      - ./data:/data    
     environment:
       - ADMIN_PASSWORD=changeme
       - JWT_SECRET=changeme
