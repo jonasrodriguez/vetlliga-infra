@@ -27,21 +27,21 @@ services:
     networks:
       - app-network
 
-    mariadb:
-      image: mariadb:11.3
-      container_name: mariadb
-      restart: always
-      environment:
-        MARIADB_DATABASE: vetlliga
-        MARIADB_USER: user
-        MARIADB_PASSWORD: password
-        MARIADB_ROOT_PASSWORD: rootpass
-      ports:
-        - "3306:3306"
-      volumes:
-        - ./mariadb:/var/lib/mysql
-      networks:
-        - app-network
+  mariadb:
+    image: mariadb:11.3
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_DATABASE: vetlliga
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: rootpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    networks:
+      - app-network
 
   phpmyadmin:
     image: lscr.io/linuxserver/phpmyadmin:latest
