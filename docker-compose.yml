@@ -1,47 +1,47 @@
 services:
 
-backend:
-  build:
-    context: ../vetlliga-back
-  container_name: vetlliga-backend
-  volumes:
-    - ./data:/data
-  ports:
-    - "8080:8080"
-  environment:
-    - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-    - JWT_SECRET=${JWT_SECRET}
-    - UPLOAD_DIR=${UPLOAD_DIR}
-    - DB_URL=${DB_URL}
-  depends_on:
-    - mariadb
-  networks:
-    - app-network
-
-frontend:
-  build:
-    context: ../vetlliga-front
-  container_name: vetlliga-frontend
-  expose:
-    - 80
-  networks:
-    - app-network
-
-  mariadb:
-    image: mariadb:11.3
-    container_name: mariadb
-    restart: always
-    environment:
-      MARIADB_DATABASE: vetlliga
-      MARIADB_USER: user
-      MARIADB_PASSWORD: password
-      MARIADB_ROOT_PASSWORD: rootpass
-    ports:
-      - "3306:3306"
+  backend:
+    build:
+      context: ../vetlliga-back
+    container_name: vetlliga-backend
     volumes:
-      - ./mariadb:/var/lib/mysql
+      - ./data:/data
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+      - UPLOAD_DIR=${UPLOAD_DIR}
+      - DB_URL=${DB_URL}
+    depends_on:
+      - mariadb
     networks:
       - app-network
+
+  frontend:
+    build:
+      context: ../vetlliga-front
+    container_name: vetlliga-frontend
+    expose:
+      - 80
+    networks:
+      - app-network
+
+    mariadb:
+      image: mariadb:11.3
+      container_name: mariadb
+      restart: always
+      environment:
+        MARIADB_DATABASE: vetlliga
+        MARIADB_USER: user
+        MARIADB_PASSWORD: password
+        MARIADB_ROOT_PASSWORD: rootpass
+      ports:
+        - "3306:3306"
+      volumes:
+        - ./mariadb:/var/lib/mysql
+      networks:
+        - app-network
 
   phpmyadmin:
     image: lscr.io/linuxserver/phpmyadmin:latest
