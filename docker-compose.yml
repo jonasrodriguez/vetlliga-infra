@@ -11,7 +11,7 @@ services:
       - ADMIN_PASSWORD=changeme
       - JWT_SECRET=changeme
       - UPLOAD_DIR=/data
-      - ENV DB_URL=mariadb:3306
+      - DB_URL=mariadb:3306
     depends_on:
       - mariadb
     networks:
