@@ -19,10 +19,8 @@ git pull
 cd "$INFRA_DIR"
 
 # --- Stop existing containers ---
+echo "Stopping existing containers..."
 docker compose down
-
-# --- Pull remaining dependencies (databases, Nginx, etc.) ---
-docker compose pull
 
 # --- Build and deploy containers ---
 echo "Building and starting services with docker-compose..."
