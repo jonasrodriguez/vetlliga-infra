@@ -18,6 +18,9 @@ git pull
 # --- Return to infra directory ---
 cd "$INFRA_DIR"
 
+# --- Stop existing containers ---
+docker compose down
+
 # --- Pull remaining dependencies (databases, Nginx, etc.) ---
 docker compose pull
 
