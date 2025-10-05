@@ -5,5 +5,5 @@ Vetlliga infrastructureç
 
 ```
 chmod +x deploy.sh
-./deploy.sh 1.5.2
+./deploy.sh
 ```

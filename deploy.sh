@@ -19,11 +19,11 @@ git pull
 cd "$INFRA_DIR"
 
 # --- Pull remaining dependencies (databases, Nginx, etc.) ---
-docker-compose pull
+docker compose pull
 
 # --- Build and deploy containers ---
 echo "Building and starting services with docker-compose..."
-docker-compose up -d --build --remove-orphans
+docker compose up -d --build --remove-orphans
 
 # --- Clean up old dangling images ---
 echo "Pruning unused Docker images and build cache..."
